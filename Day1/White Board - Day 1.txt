@@ -1,0 +1,170 @@
+Data Storage
+Data Organization
+Data Reporting
+Data Security
+Data Scalability
+
+----------------------------
+
+Before 1978 data was getting stored in "Flat File System". (FFS)
+
+In FFS data gets store in "One Single File".
+In FFS for every change a new record has to be entered with redundant values.
+Data Redundancy has some side effects:
+1) High storage space required.
+2) More memory (RAM) required while generating report.
+3) Report generation will become slow
+
+Other problems of FFS are:
+1) No data types at all....
+2) Cannot enforce business rules on the data....
+3) Cannot secure the data inherently.
+4) Complex report generation becomes difficult
+
+By using any conventional programming language we can overcome the above 4 problems.
+------------------------------
+
+RDBMS Approach:
+In RDBMS data WILL NOT BE STORED in "One Single File".
+"Subject specific" or "Context specific" "tables" should be created!!!
+The heavy unnecessary data redundancy gets completely minimized!!!
+1) High storage space IS NOT required.
+2) More memory (RAM) IS NOT required while generating report.
+3) Report generation will NOT become slow
+
+The other problems of FFS will get solved by using "SQL" as a language.
+
+******* RDBMS is practically implemented using SQL.
+
+SQL is 4 GL.
+*** It abstracts programming.
+Based on simple English keywords.
+Keywords are NOT case sensitive.
+Data types are supported
+Can enforce business rules on the data....
+Can secure the data inherently.
+Complex report generation becomes NOT SO DIFFICULT.
+
+Data Integrity Rules or Constraints in RDBMS.
+1) Primary Key (PK) -- A PK is a value (or set of values) which will uniquely identify records.
+There are 2 inherent properties of PK:
+a) Value MUST be "Unique"
+b) Value is "MANDATORY".
+A table can have ONLY ONE PK.
+
+2) Unique Key (UK) -- A UK is a value (or set of values) which will be unique.
+UK can accept multiple nulls particularly in Oracle.
+There are can be multiple UKs per table.
+
+3) Not Null (NN)
+Null in SQL or Database means unknown or missing or not entered by user.
+Value is blank.
+NN means value it TO BE ENTERED.
+NN will allow duplicates.
+There are can be multiple NN columns per table.
+
+4) Foreign Key (FK)
+FK is the value (or set of values) which is taken from the PK or UK of a different table or even of the same table.
+The table which has PK is known as Parent or Master table.
+The table which has FK is known as Details or Child table.
+FK can repeat. Actually meant to get repeated.
+FK can be null. Even multiple nulls are allowed. This is sometimes provisional arrangement (not always).
+There are can be multiple FKs columns per table.
+
+5) Check (Ch)
+Ch enforces what value has to be entered in that column.
+E.g. Salary > 10k
+There are can be multiple Ch columns per table.
+
+Composite Keys:
+When combination of values uniquely identify a record then PK or UK is made up of multiple columns.
+So, a set of values will identify one record.
+
+----------------
+Default value property for a column.
+---------------------------
+
+Physical Aspect of a Database:
+
+Any SQL Database implements RDBMS framework and supports ANSI SQL.
+
+There are 2 physical files for Oracle Database:
+1) Data Files
+2) Log Files
+
+There is "OraHome" directory.
+In 19c it is C:\Oracle19C\app\Administrator\oradata\ORCL. Here the above files are present.
+
+There are 2 main types of users in Oracle:
+1) DBA User
+2) Non-DBA user (Developer user)
+
+DBA will manage the physical aspect.
+There are 2 default DBA users in Oracle
+1) System
+2) Sys
+
+Non-DBA users are created by DBA.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,121 @@
+White Board - Day 2:
+
+Topic 1:
+Combining Multiple Constraints for ONE column:
+1) PK & Ch
+2) UK & Ch
+3) UK & NN
+4) NN & Ch
+5) NN & D
+6) Ch & D
+-------------------
+7) FK  & PK
+8) FK & NN
+9) FK & UK
+10) FK & UK & NN
+11) FK & Ch
+12) FK & D
+
+---------------------------------------------------------------------------------
+Topic 2:
+ERD (by ppt)
+
+---------------------------------------------------------
+Topic 3:
+Types of SQL Commands:
+1) DDL -- Create, Alter, Drop, Modify, Enable, Disable, Add
+
+2) DML -- Insert, Update, Delete, Merge
+
+***** 3) DRL or DQL -- Select, etc.
+###################
+
+4) TCL -- Commit, Rollback and Savepoint.
+
+5) DCL -- Grant, Revoke
+
+
+---------------------------------------------------------
+
+Oracle SQL Functions:
+There are 2 types of functions:
+1) Single Row Functions
+
+2) Multi Row or aka Aggregate functions or aka Group functions
+
+Single Row Function means the function will return value for each row of the select statement output or filter condition.
+
+
+-------------------
+
+Exploring Select Statament
+
+Expressions in Column List
+
+Dual is table owned by Sys user.
+Its Public Synonym is also Dual.
+The select access is given to Dual table to all the Oracle users.
+
+Actually the dual table has ONLY 1 ROW.
+
+Select 6 + 7 from Dual;
+
+Select Ename, Sal, Sal * 12 From Emp;
+
+-------------------
+
+Concatenation:
+In Oracle SQL for concatenating strings we can do it by two ways:
+1) Using || operator
+
+OR
+
+
+2) Using Concat Function
+
+
+1) Using || operator
+
+Select Ename || Job From Emp;
+
+Select Ename || ' ' || Job as "Details"
+From Emp;
+
+Select 'Dear ' || Initcap(Ename) || ', your job type is ' || Job as "Job Details"
+From Emp;
+
+
+
+Select Ename || Sal
+From Emp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
