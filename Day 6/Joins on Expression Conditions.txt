@@ -1,0 +1,36 @@
+create table bonus_details
+(year_of_joining int,
+ bonus_amount int
+);
+Insert into bonus_details Values(1980, 50000);
+Insert into bonus_details Values(1981, 45000);
+Insert into bonus_details Values(1982, 40000);
+commit;
+
+cle scr
+
+select * from bonus_details;
+
+select * from emp;
+
+cle scr
+
+
+select e.empno, 
+           e.ename, 
+           b.Year_of_Joining,
+           e.sal, 
+           e.sal + b.bonus_amount as "This month's Salary"
+from emp e join bonus_details b
+on to_char(hiredate,'yyyy') = b.Year_of_Joining;
+
+
+
+select e.empno, e.ename, b.Year_of_Joining,
+           e.sal, e.sal + b.bonus_amount as "Take Home Salary"
+from emp e Left join bonus_details b
+on to_char(hiredate,'yyyy') = b.Year_of_Joining;
+
+
+
+

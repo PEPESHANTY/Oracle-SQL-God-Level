@@ -1,0 +1,23 @@
+
+Which 3 statements are TRUE about FK?
+A. FK cannot accept null
+B. FK can accept only one null
+C. FK can accept multiple nulls
+D. FK can never become PK
+E. FK's data type MUST be same as PK's data type.
+F. FK's data type MUST be different as PK's data type.
+G. FK's name MUST be same as PK's name 
+H. FK's name  CAN be different as PK's name.
+I.  FK is based on clusters
+
+A	F
+B	F
+C	T
+D	F
+E	T
+F	F
+G	F
+H	T
+I	?
+
+
