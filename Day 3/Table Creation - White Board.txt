@@ -1,0 +1,134 @@
+Constraint declaration types:
+1) Can be declared at column level
+2) Can be declared as table level
+
+
+Constraint naming:
+1) Oracle will provide name starting with SYS_C<AutoNumber>
+or
+2) User can provide meaningful name.
+
+
+
+create table customer_master
+(CustID Varchar(10) Primary Key,
+ CustName Varchar(50) Not Null,
+ Inv_No Char(6) Unique,
+ Dep_Amt Int Check(Dep_Amt >= 5000),
+ City Varchar(40) Default 'Pune'
+);
+
+create table transactions
+(CustID Varchar(10) References customer_master,
+ Prid char(4),
+ cost int
+);
+
+Insert into  transactions Values('C1', 'PQ65', 200); -- Error
+
+Insert into customer_master Values('C1', 'John', Null, 6000);
+
+
+Insert into customer_master(CustID, CustName) Values('C2', 'Martin');
+
+Insert into  transactions Values('C1', 'PQ66', 300);
+
+Insert into customer_master Values('C3', 'Smith', Null, 3000, default);
+
+create table customer_master2
+(CustID Varchar(10) Constraint Orcl_Scott_Cust_Mast2_CustID_PK Primary Key,
+ CustName Varchar(50) Not Null,
+ Inv_No Char(6) Unique,
+ Dep_Amt Int Constraint Orcl_Scott_Cust_Mast2_Deposit_Above5000 Check(Dep_Amt >= 5000),
+ City Varchar(40) Default 'Pune'
+);
+
+Insert into customer_master2 Values('C1', 'Smith', Null, 3000, default);
+
+
+
+
+
+
+create table customer_master3
+(CustID Varchar(10) Constraint Dog Primary Key,
+ CustName Varchar(50) Not Null,
+ Inv_No Char(6) Unique,
+ Dep_Amt Int Constraint Cat Check(Dep_Amt >= 5000),
+ City Varchar(40) Default 'Pune'
+);
+
+
+Insert into customer_master3 Values('C1', 'Smith', Null, 3000, default);
+
+Column Level Constraints means column name, data type and constraint type all 3 are mentioned together.
+
+Table Level Constraints means column name and data type will be mentioned first and then at the end the constraints will be mentioned one by one.
+
+create table tab11
+(A int,
+ B int Not Null,
+ C int,
+ D int,
+ Primary Key(A),
+ Unique (C),
+ Check (D > 0)
+);
+
+create table tab12
+(A int,
+ E int,
+Foreign Key(A) References tab11
+);
+
+When TL becomes mandatory:
+1) While creating Composite Keys
+2) In the check constraint when two columns of the same table are getting compared.
+
+create table tab13
+(A int,
+ B int,
+ C int,
+ D int,
+ Primary Key(A,B)
+);
+
+create table tab14
+(A int,
+ B int,
+ C int Check(C > B)
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

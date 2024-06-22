@@ -1,0 +1,147 @@
+Order By Clause
+
+-------------------------------------------------
+
+Single Row Functions - Null handling functions
+1) NVL is OS function to replace a null value with a not null value or an expression (expr).
+1) NVL(Column Name or Expr, Value or Expr if the first parameter is null)
+
+2) NVL2
+
+3) NullIf
+
+4) Coalesce
+
+---------------------------------------------
+Conditional Function -- Case
+
+Case function comes in two formats:
+1) Case acting as Switch case
+2) Case acting as  If ... Else If .. Else
+
+1) Case acting as Switch case:
+Exact value (= operator) is compared.
+Select Ename, Deptno, Case Deptno
+				When 10 then 'A'
+				When 20 then 'B'
+				else
+				'C'
+		    End as "Deptno Grade"
+from emp;
+Syntax:
+Case ColumnName
+		When Value1 Then St1
+		When Value2 Then St2
+		................
+		...............
+		[Else
+		Stn]
+End [as alias]
+
+---------
+2) Case acting as  If ... Else If .. Else
+Syntax:
+Case 
+		When Boolean Condition1 Then St1
+		When Boolean Condition2 Then St2
+		......................
+		.......................
+		[Else
+		Stn]
+End [as alias]
+
+Select Ename, Sal, Case
+			When Sal >= 4000 then 'A'
+			When Sal >= 2700 then 'B'
+			When Sal >= 2100 then 'C'
+			When Sal >= 1500 then 'D'
+			Else
+			'E'
+		End as "Salary Class"
+From emp;
+
+
+
+Select Ename, Sal, Case
+			When Sal >= 4000 then 'No increment'
+			When Sal >= 2700 then Sal + 900
+			When Sal >= 2100 then Sal + 1500
+			When Sal >= 1500 then Sal + 2000
+			Else
+			Sal + 2300
+		End as "Increment Status"
+From emp;
+
+
+-------------------------------------------------------------------
+ProdID
+PX-90_RL+456
+PX-91_AL+456
+PX-92_RL+456
+
+SubStr Function is OP.
+
+SubStr will help us to extract a part of string from an entire string, that too from a position.
+
+Select SubStr('ABCDEFGH', 3,4) from dual;
+
+Select SubStr('ABCDEFGH', 3) from dual;
+
+SubStr(Column Or String, Position from where to extract [,How many characters to extract])
+
+Select SubStr('ABCDEFGH', -3, 2) from dual;
+
+When the string needs to be extracted from the end then position will be -ve integer.
+
+----------------------------
+String Data Types:
+1) Char
+2) Varchar  In Oracle Varchar is aka Varchar2.
+In ANSI SQL it is known as Varchar
+
+1) Char: Fixed Length, default size is 1 if not mentioned, 2000 size
+2) Varchar or Varchar2: Varying length, No default size, 4000 size
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

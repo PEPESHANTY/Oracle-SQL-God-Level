@@ -1,0 +1,27 @@
+create table Full_Names
+(Id int,
+ Name Varchar(30)
+);
+
+Insert into Full_Names Values(1,'Mandar Mulay');
+Insert into Full_Names Values(2,'Anil Sharma');
+Insert into Full_Names Values(3,'Anand Kamat');
+commit;
+
+-- Display only the First names:
+Select ID, Substr(Name, 1, Instr(Name, ' ') ) as "First Name"
+From Full_Names;
+
+-- Display only the Surnames:
+Select ID, Substr(Name, Instr(Name, ' ') + 1) as "SurName"
+From Full_Names;
+
+Select * from try1;
+
+Select * from try1 where city= 'Pune';
+
+Select * from try1 where rtrim(city)= 'Pune';
+
+
+
+
