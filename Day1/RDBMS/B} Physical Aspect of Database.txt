@@ -1,0 +1,75 @@
+Introduction to Oracle:
+
+1) 40+ years old product.
+2) Earlier was only an RDBMS SQL Database Company.
+3) Timeline of Oracle Database
+	a) 7.x
+	b) 8.0
+	c) 8i
+	d) 9i
+	e) 10g
+	f) 11g
+	g) 12c
+	h) 17c
+	i) 19c
+	j) 21c
+
+Physical Aspect of Oracle Database:
+As per DBA a Database is collection of some data files and log files.
+
+The name of default database getting created at the time of installation is Orcl.
+In Windows one service gets created for each database. The name of that service is OracleServiceORCL. It should be running.
+For getting connected with external applications there is one service known as TNSListener. It also should be running.
+
+Users in Oracle Database:
+There are mainly 2 types of users.
+1) DBA user
+2) Non-DBA user
+
+1) DBA user: Sys and System are the two database users by default getting created.
+The password is to be set while installing.
+
+2) Non-DBA user: They are created later by Sys or System user.
+One user Scott with password tiger will be created.
+
+Database -- User  -- Table Relationship in Oracle:
+
+Orcl -- Database
+	Scott -- User or also known as Schema
+		Emp is the table
+
+The Physical data file in which actually the data is stored has extension .dbf.
+It is binary file.
+
+Entire C drive has 2 TB space
+Out of which for Oracle 700 GB is allocated.
+
+For the user Scott we need to allocate some space within that 700 GB.
+
+So, tablespace needs to be mapped with the user.
+
+Tablespace is collection of one or multiple data files (.dbf).
+Users is the name of default Tablespace.
+It is having the default datafile Users01.dbf
+
+Scott user has to be mapped to Users Tablespace.
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
