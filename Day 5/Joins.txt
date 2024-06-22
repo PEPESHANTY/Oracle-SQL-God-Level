@@ -1,0 +1,68 @@
+select e.ename, d.dname, e.deptno
+from emp e, dept d
+where e.deptno = d.deptno;
+
+select e.ename, d.dname, e.deptno, e.sal
+from emp e, dept d
+where e.deptno = d.deptno and e.sal > 2000;
+
+
+select e.ename, d.dname, e.deptno
+from emp e inner join dept d
+on e.deptno = d.deptno;
+
+
+select e.ename, d.dname, e.deptno, e.sal
+from emp e inner join dept d
+on e.deptno = d.deptno
+where e.sal >= 2000;
+
+select ename, dname
+from emp Natural Join dept;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- OR
+select e.ename, d.dname, e.deptno, e.sal
+from emp e inner join dept d
+on e.deptno = d.deptno And e.sal >= 2000;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
