@@ -1,0 +1,397 @@
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Thu Jun 20 21:34:44 2024
+Version 19.3.0.0.0
+
+Copyright (c) 1982, 2019, Oracle.  All rights reserved.
+
+Enter user-name: scott
+Enter password:
+Last Successful login time: Thu Jun 20 2024 07:38:01 -07:00
+
+Connected to:
+Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+Version 19.3.0.0.0
+
+SQL> set linesize 120;
+SQL> set pagesize 200;
+SQL> select * from dep;
+select * from dep
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> select * from dept;
+
+    DEPTNO DNAME          LOC
+---------- -------------- -------------
+        10 ACCOUNTING     NEW YORK
+        20 RESEARCH       DALLAS
+        30 SALES          CHICAGO
+        40 OPERATIONS     BOSTON
+
+SQL> select * from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10
+      7788 SCOTT      ANALYST         7566 09-DEC-82       3000                    20
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30
+      7876 ADAMS      CLERK           7788 12-JAN-83       1100                    20
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10
+
+14 rows selected.
+
+SQL> ---Oracle Syntax first
+SQL> select ename,dname
+  2  from emp,dept
+  3  where emp.deptno = dept.deptno;
+
+ENAME      DNAME
+---------- --------------
+SMITH      RESEARCH
+ALLEN      SALES
+WARD       SALES
+JONES      RESEARCH
+MARTIN     SALES
+BLAKE      SALES
+CLARK      ACCOUNTING
+SCOTT      RESEARCH
+KING       ACCOUNTING
+TURNER     SALES
+ADAMS      RESEARCH
+JAMES      SALES
+FORD       RESEARCH
+MILLER     ACCOUNTING
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select ename,emp.deptno,dname
+  2  from emp,dept
+  3* where emp.deptno = dept.deptno
+SQL> /
+
+ENAME          DEPTNO DNAME
+---------- ---------- --------------
+SMITH              20 RESEARCH
+ALLEN              30 SALES
+WARD               30 SALES
+JONES              20 RESEARCH
+MARTIN             30 SALES
+BLAKE              30 SALES
+CLARK              10 ACCOUNTING
+SCOTT              20 RESEARCH
+KING               10 ACCOUNTING
+TURNER             30 SALES
+ADAMS              20 RESEARCH
+JAMES              30 SALES
+FORD               20 RESEARCH
+MILLER             10 ACCOUNTING
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select e.ename,emp.deptno,d.dname
+  2  from emp e,dept d
+  3* where e.deptno = d.deptno
+SQL> /
+select e.ename,emp.deptno,d.dname
+               *
+ERROR at line 1:
+ORA-00904: "EMP"."DEPTNO": invalid identifier
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select e.ename,e.deptno,d.dname
+  2  from emp e,dept d
+  3* where e.deptno = d.deptno
+SQL> /
+
+ENAME          DEPTNO DNAME
+---------- ---------- --------------
+SMITH              20 RESEARCH
+ALLEN              30 SALES
+WARD               30 SALES
+JONES              20 RESEARCH
+MARTIN             30 SALES
+BLAKE              30 SALES
+CLARK              10 ACCOUNTING
+SCOTT              20 RESEARCH
+KING               10 ACCOUNTING
+TURNER             30 SALES
+ADAMS              20 RESEARCH
+JAMES              30 SALES
+FORD               20 RESEARCH
+MILLER             10 ACCOUNTING
+
+14 rows selected.
+
+SQL> select * from d;
+
+    DEPTNO DNAME      PCODE
+---------- ---------- -----
+        10 Prod       P1
+        20 Maint      P2
+        30 Insp       P1
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select * from d
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select e.ename,e.deptno,d.dname
+  2      from emp e,dept d
+  3*  -- where e.deptno = d.deptno
+SQL> /
+
+ENAME          DEPTNO DNAME
+---------- ---------- --------------
+SMITH              20 ACCOUNTING
+ALLEN              30 ACCOUNTING
+WARD               30 ACCOUNTING
+JONES              20 ACCOUNTING
+MARTIN             30 ACCOUNTING
+BLAKE              30 ACCOUNTING
+CLARK              10 ACCOUNTING
+SCOTT              20 ACCOUNTING
+KING               10 ACCOUNTING
+TURNER             30 ACCOUNTING
+ADAMS              20 ACCOUNTING
+JAMES              30 ACCOUNTING
+FORD               20 ACCOUNTING
+MILLER             10 ACCOUNTING
+SMITH              20 RESEARCH
+ALLEN              30 RESEARCH
+WARD               30 RESEARCH
+JONES              20 RESEARCH
+MARTIN             30 RESEARCH
+BLAKE              30 RESEARCH
+CLARK              10 RESEARCH
+SCOTT              20 RESEARCH
+KING               10 RESEARCH
+TURNER             30 RESEARCH
+ADAMS              20 RESEARCH
+JAMES              30 RESEARCH
+FORD               20 RESEARCH
+MILLER             10 RESEARCH
+SMITH              20 SALES
+ALLEN              30 SALES
+WARD               30 SALES
+JONES              20 SALES
+MARTIN             30 SALES
+BLAKE              30 SALES
+CLARK              10 SALES
+SCOTT              20 SALES
+KING               10 SALES
+TURNER             30 SALES
+ADAMS              20 SALES
+JAMES              30 SALES
+FORD               20 SALES
+MILLER             10 SALES
+SMITH              20 OPERATIONS
+ALLEN              30 OPERATIONS
+WARD               30 OPERATIONS
+JONES              20 OPERATIONS
+MARTIN             30 OPERATIONS
+BLAKE              30 OPERATIONS
+CLARK              10 OPERATIONS
+SCOTT              20 OPERATIONS
+KING               10 OPERATIONS
+TURNER             30 OPERATIONS
+ADAMS              20 OPERATIONS
+JAMES              30 OPERATIONS
+FORD               20 OPERATIONS
+MILLER             10 OPERATIONS
+
+56 rows selected.
+
+SQL> --output logically wrong
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select e.ename,e.deptno,d.dname
+  2      from emp e,dept d
+  3*  where e.deptno = d.deptno and e.sal>2000;
+SQL> /
+ where e.deptno = d.deptno and e.sal>2000;
+                                         *
+ERROR at line 3:
+ORA-00933: SQL command not properly ended
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select e.ename,e.deptno,d.dname
+  2      from emp e,dept d
+  3*  where e.deptno = d.deptno and e.sal>2000
+SQL> /
+
+ENAME          DEPTNO DNAME
+---------- ---------- --------------
+JONES              20 RESEARCH
+BLAKE              30 SALES
+CLARK              10 ACCOUNTING
+SCOTT              20 RESEARCH
+KING               10 ACCOUNTING
+FORD               20 RESEARCH
+
+6 rows selected.
+
+SQL> select e.ename,d.dname, e.deptno
+  2  from emp e inner join dept d
+  3  on e.deptno = d.deptno
+  4  ;
+
+ENAME      DNAME              DEPTNO
+---------- -------------- ----------
+SMITH      RESEARCH               20
+ALLEN      SALES                  30
+WARD       SALES                  30
+JONES      RESEARCH               20
+MARTIN     SALES                  30
+BLAKE      SALES                  30
+CLARK      ACCOUNTING             10
+SCOTT      RESEARCH               20
+KING       ACCOUNTING             10
+TURNER     SALES                  30
+ADAMS      RESEARCH               20
+JAMES      SALES                  30
+FORD       RESEARCH               20
+MILLER     ACCOUNTING             10
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select e.ename,d.dname, e.deptno
+  2  from emp e inner join dept d
+  3* --on e.deptno = d.deptno
+  4  /
+--on e.deptno = d.deptno
+                       *
+ERROR at line 3:
+ORA-00905: missing keyword
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select e.ename,d.dname, e.deptno
+  2  from emp e join dept d
+  3* on e.deptno = d.deptno
+SQL> /
+
+ENAME      DNAME              DEPTNO
+---------- -------------- ----------
+SMITH      RESEARCH               20
+ALLEN      SALES                  30
+WARD       SALES                  30
+JONES      RESEARCH               20
+MARTIN     SALES                  30
+BLAKE      SALES                  30
+CLARK      ACCOUNTING             10
+SCOTT      RESEARCH               20
+KING       ACCOUNTING             10
+TURNER     SALES                  30
+ADAMS      RESEARCH               20
+JAMES      SALES                  30
+FORD       RESEARCH               20
+MILLER     ACCOUNTING             10
+
+14 rows selected.
+
+SQL>
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select e.ename,d.dname, e.deptno
+  2  from emp e join dept d
+  3* on e.deptno = d.deptno
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select e.ename,d.dname, e.deptno
+  2  from emp e join dept d
+  3  on e.deptno = d.deptno
+  4* where e.sal >=2000
+SQL> /
+
+ENAME      DNAME              DEPTNO
+---------- -------------- ----------
+JONES      RESEARCH               20
+BLAKE      SALES                  30
+CLARK      ACCOUNTING             10
+SCOTT      RESEARCH               20
+KING       ACCOUNTING             10
+FORD       RESEARCH               20
+
+6 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  select e.ename,d.dname, e.deptno
+  2  from emp e join dept d
+  3* on e.deptno = d.deptno and e.sal >=2000
+SQL> /
+
+ENAME      DNAME              DEPTNO
+---------- -------------- ----------
+JONES      RESEARCH               20
+BLAKE      SALES                  30
+CLARK      ACCOUNTING             10
+SCOTT      RESEARCH               20
+KING       ACCOUNTING             10
+FORD       RESEARCH               20
+
+6 rows selected.
+
+SQL> -- de default 'on' do the job of joining but in some cases it can do the work of filtering like where( and works well here and issue is caused in 'or' problem of injection concepts is caused here )
+SQL>
+
+SQL> NON EQUI JOIN EXAMPLE
+
+SQL> select ename, sal, grade
+  2  from emp,salgrade
+  3  where sal between losal and hisal;
+
+ENAME             SAL      GRADE
+---------- ---------- ----------
+SMITH             800          1
+JAMES             950          1
+ADAMS            1100          1
+WARD             1250          2
+MARTIN           1250          2
+MILLER           1300          2
+TURNER           1500          3
+ALLEN            1600          3
+CLARK            2450          4
+BLAKE            2850          4
+JONES            2975          4
+SCOTT            3000          4
+FORD             3000          4
+KING             5000          5
+
+14 rows selected.
+
+SQL>
