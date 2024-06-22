@@ -1,0 +1,48 @@
+
+SumAvgMaxMin With Numerics of Varchar Data Type Values
+
+create table emps
+(empid int,
+ salary varchar(10)
+);
+
+Insert into emps Values(1,'800');
+Insert into emps Values(2,'1500');
+Insert into emps Values(3,'2700');
+commit;
+
+
+select sum(salary) from emps; --???? as salary values are varchar
+
+select avg(salary) from emps;  -- ???
+
+select max(salary) from emps;  -- ????????
+
+select min(salary) from emps;  -- ????????
+
+Scroll Down....................................................
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+select max(to_number(salary)) from emps; 
+
+select min(to_number(salary)) from emps; 
+
+
+

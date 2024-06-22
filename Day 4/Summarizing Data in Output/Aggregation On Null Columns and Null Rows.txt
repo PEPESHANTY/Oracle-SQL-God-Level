@@ -1,0 +1,90 @@
+Aggregation On Null Columns and Null Rows:
+
+create table empty_rows
+(a int,
+ b int,
+ c int
+);
+
+Insert into empty_rows Values(Null, Null, Null);
+Insert into empty_rows Values(Null, Null, Null);
+Insert into empty_rows Values(Null, Null, Null);
+Insert into empty_rows Values(Null, Null, Null);
+Insert into empty_rows Values(Null, Null, Null);
+Insert into empty_rows Values(Null, Null, Null);
+Insert into empty_rows Values(Null, Null, Null);
+commit;
+
+select * from empty_rows;
+
+select sum(a), avg(a), max(a), min(a) from empty_rows;
+
+Scroll Down ........
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+select count(a) from empty_rows; -- ???
+
+
+
+Scroll Down ........
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+select count(*) from empty_rows; -- ????????
+
+Scroll Down ........
+
+
+
+
+
+
+
+
+
+
+
+select count('LTIMindtree') from empty_rows; -- ????????
+
+
+
+
+
