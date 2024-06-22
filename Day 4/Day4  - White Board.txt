@@ -1,0 +1,9 @@
+Distinct
+--------------------
+Multirow / Aggregate / Group Functions:
+
+They will return a SINGLE value for a group of rows.
+If Group By clause is not there then the entire table becomes a group of rows.
+
+Sum, Avg, Max, Min, Count
+
